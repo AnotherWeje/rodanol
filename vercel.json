@@ -1,5 +1,12 @@
 {
   "rewrites": [
-    { "source": "/services", "destination": "/services" }
+    {
+      "source": "/(services|blog|contact)",
+      "destination": "/"
+    },
+    {
+      "source": "/",
+      "destination": "/"
+    }
   ]
 }
