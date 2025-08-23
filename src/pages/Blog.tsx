@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 import { Calendar, Clock, ArrowRight, BarChart3, Zap, TrendingUp } from "lucide-react";
 import { articles } from "@/data/articles";
 
+import blogHero from "@/assets/blog.jpg";
+import { motion } from "framer-motion";
+
+
 const Blog = () => {
   const getIcon = (category: string) => {
     switch (category) {
@@ -27,16 +31,41 @@ const Blog = () => {
       <Navigation />
       
       {/* Hero Blog */}
-      <section className="relative py-24 gradient-hero text-white">
+      <section className="relative py-24 min-h-[60vh] gradient-hero text-white">
+        <img
+          src={blogHero}
+          alt="Services digitaux Rodanol"
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          loading="lazy"
+          decoding="async"
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Blog Rodanol
-          </h1>
-          <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto">
-            Conseils, guides pratiques et actualités sur la transformation digitale
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.h1
+              className="text-4xl md:text-6xl font-bold mb-6"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Blog Rodanol
+            </motion.h1>
+            <motion.p
+              className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              Conseils, guides pratiques et actualités sur la transformation digitale
+            </motion.p>
+          </motion.div>
         </div>
-      </section>
+  {/* Dégradé décoratif en bas du hero */}
+  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+  </section>
 
       {/* Article mis en avant */}
       {featuredArticle && (

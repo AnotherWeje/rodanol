@@ -28,7 +28,7 @@ const MissionSection = () => {
           <div>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8">
               Pourquoi choisir 
-              <span className="text-primary block">Rodanol ?</span>
+              <span className="block" style={{ color: '#089cb0' }}>Rodanol ?</span>
             </h2>
             
             <div className="space-y-8">

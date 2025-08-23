@@ -1,3 +1,7 @@
+/* Dégradé bleu Rodanol pour le hero-section */
+.bg-hero-gradient {
+  background: linear-gradient(135deg, hsl(186,94%,41%) 0%, hsl(222,47%,11%) 50%, hsl(186,94%,31%) 100%);
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,46 +22,46 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222 84% 4.9%;
 
-    /* Bleu nuit principal */
-    --primary: 215 25% 27%;
-    --primary-foreground: 0 0% 98%;
+  /* Bleu Rodanol principal */
+  --primary: 186 94% 41%; /* #07c0d5 en HSL */
+  --primary-foreground: 0 0% 98%;
     
-    /* Noir professionnel */
-    --secondary: 222 47% 11%;
-    --secondary-foreground: 0 0% 98%;
+  /* Noir professionnel */
+  --secondary: 222 47% 11%;
+  --secondary-foreground: 0 0% 98%;
 
-    /* Tons neutres */
-    --muted: 215 20% 96%;
-    --muted-foreground: 215 10% 46%;
+  /* Tons neutres */
+  --muted: 186 20% 96%;
+  --muted-foreground: 186 10% 46%;
 
-    --accent: 215 25% 27%;
-    --accent-foreground: 0 0% 98%;
+  --accent: 186 94% 41%;
+  --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
 
-    --border: 215 20% 91%;
-    --input: 215 20% 96%;
-    --ring: 215 25% 27%;
+  --border: 186 20% 91%;
+  --input: 186 20% 96%;
+  --ring: 186 94% 41%;
 
-    --radius: 0.75rem;
+  --radius: 0.75rem;
 
-    /* Gradients corporatifs */
-    --gradient-primary: linear-gradient(135deg, hsl(215 25% 27%), hsl(222 47% 11%));
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 99%), hsl(215 20% 98%));
-    --gradient-hero: linear-gradient(135deg, hsl(215 25% 27%) 0%, hsl(222 47% 11%) 50%, hsl(215 25% 23%) 100%);
+  /* Gradients corporatifs */
+  --gradient-primary: linear-gradient(135deg, hsl(186 94% 41%), hsl(222 47% 11%));
+  --gradient-subtle: linear-gradient(180deg, hsl(0 0% 99%), hsl(186 20% 98%));
+  --gradient-hero: linear-gradient(135deg, hsl(186 94% 41%) 0%, hsl(222 47% 11%) 50%, hsl(186 94% 31%) 100%);
     
-    /* Shadows élégantes */
-    --shadow-elegant: 0 20px 25px -5px hsl(215 25% 27% / 0.1), 0 10px 10px -5px hsl(215 25% 27% / 0.04);
-    --shadow-card: 0 4px 6px -1px hsl(215 25% 27% / 0.1), 0 2px 4px -1px hsl(215 25% 27% / 0.06);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  /* Shadows élégantes */
+  --shadow-elegant: 0 20px 25px -5px hsl(186 94% 41% / 0.1), 0 10px 10px -5px hsl(186 94% 41% / 0.04);
+  --shadow-card: 0 4px 6px -1px hsl(186 94% 41% / 0.1), 0 2px 4px -1px hsl(186 94% 41% / 0.06);
 
-    --sidebar-background: 0 0% 98%;
+  /* Animations */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+  --sidebar-background: 0 0% 98%;
+
+  --sidebar-foreground: 240 5.3% 26.1%;
 
     --sidebar-primary: 240 5.9% 10%;
 

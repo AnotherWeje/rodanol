@@ -8,6 +8,9 @@ import { Mail, Phone, MapPin, Calendar, Clock, Users } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
+import heroImage from "@/assets/contact.jpg";
+import { motion } from "framer-motion";
+
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -38,16 +41,40 @@ const Contact = () => {
       <Navigation />
       
       {/* Hero Contact */}
-      <section className="relative py-24 gradient-hero text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+      <section className="relative py-24 min-h-[60vh] gradient-hero text-white">
+        <img
+          src={heroImage}
+          alt="Services digitaux Rodanol"
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          loading="lazy"
+          decoding="async"
+        />
+        <motion.div
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h1
+            className="text-4xl md:text-6xl font-bold mb-6"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             Contactez-nous
-          </h1>
-          <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto">
+          </motion.h1>
+          <motion.p
+            className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             Discutons de votre projet de transformation digitale
-          </p>
-        </div>
-      </section>
+          </motion.p>
+        </motion.div>
+  {/* Dégradé décoratif en bas du hero */}
+  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+  </section>
 
       {/* Contact Section */}
       <section className="py-24 bg-background">
@@ -59,11 +86,10 @@ const Contact = () => {
               <h2 className="text-3xl font-bold text-foreground mb-8">
                 Envoyez-nous un message
               </h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6 bg-white/90 rounded-2xl shadow-xl p-8 border border-blue-100">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="nom" className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="nom" className="block text-sm font-medium text-blue-900 mb-2">
                       Nom complet *
                     </label>
                     <Input
@@ -73,12 +99,12 @@ const Contact = () => {
                       required
                       value={formData.nom}
                       onChange={handleChange}
-                      className="h-12"
+                      className="h-12 rounded-lg border border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all px-4 bg-white/80"
                       placeholder="Votre nom"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="email" className="block text-sm font-medium text-blue-900 mb-2">
                       Email *
                     </label>
                     <Input
@@ -88,14 +114,13 @@ const Contact = () => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="h-12"
+                      className="h-12 rounded-lg border border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all px-4 bg-white/80"
                       placeholder="votre@email.com"
                     />
                   </div>
                 </div>
-                
                 <div>
-                  <label htmlFor="objet" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="objet" className="block text-sm font-medium text-blue-900 mb-2">
                     Objet *
                   </label>
                   <Input
@@ -105,13 +130,12 @@ const Contact = () => {
                     required
                     value={formData.objet}
                     onChange={handleChange}
-                    className="h-12"
+                    className="h-12 rounded-lg border border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all px-4 bg-white/80"
                     placeholder="Sujet de votre demande"
                   />
                 </div>
-                
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-blue-900 mb-2">
                     Message *
                   </label>
                   <Textarea
@@ -121,11 +145,11 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={6}
+                    className="rounded-lg border border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all px-4 bg-white/80"
                     placeholder="Décrivez votre projet ou vos besoins..."
                   />
                 </div>
-                
-                <Button type="submit" size="lg" className="w-full gradient-primary">
+                <Button type="submit" size="lg" className="w-full gradient-primary shadow-lg hover:scale-[1.03] transition-transform duration-200">
                   Envoyer le message
                 </Button>
               </form>
@@ -145,15 +169,15 @@ const Contact = () => {
                 <CardContent className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Mail className="h-5 w-5 text-muted-foreground" />
-                    <span>contact@rodanol.fr</span>
+                    <span>jose.voukeng@roda-nol.com</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="h-5 w-5 text-muted-foreground" />
-                    <span>+33 1 23 45 67 89</span>
+                    <span>+237 677 105 923</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <MapPin className="h-5 w-5 text-muted-foreground" />
-                    <span>Paris, France</span>
+                    <span>Douala, Cameroun</span>
                   </div>
                 </CardContent>
               </Card>
@@ -190,7 +214,7 @@ const Contact = () => {
                     className="w-full bg-white text-primary hover:bg-blue-50"
                     size="lg"
                   >
-                    <a href="https://calendly.com/rodanol/20min" target="_blank" rel="noreferrer">
+                    <a href="https://calendly.com/josevoukeng25/20min" target="_blank" rel="noopener noreferrer">
                       Réserver un créneau
                     </a>
                   </Button>

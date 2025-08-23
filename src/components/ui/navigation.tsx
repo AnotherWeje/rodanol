@@ -4,6 +4,8 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+import logo from "@/assets/logo.png";
+
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -27,10 +29,16 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">R</span>
+            <div className="w-6 h-8 items-center justify-center">
+              <span className="text-primary-foreground font-bold text-lg">
+                <img
+                  src={logo}
+                  alt="R"
+                  className="w-6 h-8"
+                />
+              </span>
             </div>
-            <span className="text-xl font-bold text-foreground">Rodanol</span>
+            <span className="text-xl font-bold" style={{ color: '#0d475a' }}>Rodanol</span>
           </Link>
 
           {/* Desktop Navigation */}
