@@ -2,8 +2,6 @@ import React from "react";
 import aboutImage from "@/assets/hero-digital-transformation.jpg";
 import whyImage from "@/assets/pourquoi-nous.jpg";
 
-
-
 const AboutSection = () => (
   <section className="relative py-10 bg-black/5 overflow-hidden">
     {/* SVG vectoriel en arrière-plan */}
