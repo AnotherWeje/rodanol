@@ -22,8 +22,7 @@ const Footer = () => {
               <span className="text-xl font-bold">Rodanol</span>
             </div>
             <p className="text-secondary-foreground/80 mb-6 max-w-md">
-              Votre partenaire de confiance pour la transformation digitale. 
-              Nous accompagnons les entreprises vers l'excellence opérationnelle.
+              Votre partenaire de confiance pour la transformation digitale. Nous accompagnons les entreprises vers des solutions digitales efficaces et adaptées. 
             </p>
             <div className="space-y-2">
               <div className="flex items-center gap-3 text-sm">

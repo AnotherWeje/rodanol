@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Calendar, Clock, Users } from "lucide-react";
 import { useState } from "react";
+import emailjs from "emailjs-com";
 import { useToast } from "@/hooks/use-toast";
 
 import heroImage from "@/assets/contact.jpg";
@@ -14,19 +15,38 @@ import { motion } from "framer-motion";
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    nom: "",
+    name: "",
     email: "",
-    objet: "",
+    title: "",
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message envoyé !",
-      description: "Nous vous répondrons dans les plus brefs délais.",
-    });
-    setFormData({ nom: "", email: "", objet: "", message: "" });
+    try {
+      await emailjs.send(
+        "service_1qq4bsg", // Remplace par ton Service ID EmailJS
+        "template_ls12ja9", // Remplace par ton Template ID EmailJS
+        {
+          name: formData.name,
+          email: formData.email,
+          title: formData.title,
+          message: formData.message,
+        },
+        "T76Ycn-dVq6nFjb10" // Remplace par ton User ID EmailJS
+      );
+      toast({
+        title: "Message envoyé !",
+        description: "Nous vous répondrons dans les plus brefs délais.",
+      });
+      setFormData({ name: "", email: "", title: "", message: "" });
+    } catch (error) {
+      toast({
+        title: "Erreur lors de l'envoi",
+        description: "Une erreur est survenue, veuillez réessayer.",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -69,15 +89,16 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Discutons de votre projet de transformation digitale
+            Vous avez un projet ou une question concernant la transformation digitale? <br /><br />
+            Remplissez le formulaire ci-dessous, utilisez nos coordonnées ou réservez un rendez vous gratuitement pour prendre contact facilement et rapidement. 
           </motion.p>
         </motion.div>
   {/* Dégradé décoratif en bas du hero */}
   <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
   </section>
 
-      {/* Contact Section */}
-      <section className="py-24 bg-background">
+  {/* Contact Section */}
+  <section className="py-24 bg-background/0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
             
@@ -86,18 +107,18 @@ const Contact = () => {
               <h2 className="text-3xl font-bold text-foreground mb-8">
                 Envoyez-nous un message
               </h2>
-              <form onSubmit={handleSubmit} className="space-y-6 bg-white/90 rounded-2xl shadow-xl p-8 border border-blue-100">
+              <form onSubmit={handleSubmit} className="space-y-6 bg-black/5 rounded-2xl shadow-xl p-8">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="nom" className="block text-sm font-medium text-blue-900 mb-2">
                       Nom complet *
                     </label>
                     <Input
-                      id="nom"
-                      name="nom"
+                      id="name"
+                      name="name"
                       type="text"
                       required
-                      value={formData.nom}
+                      value={formData.name}
                       onChange={handleChange}
                       className="h-12 rounded-lg border border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all px-4 bg-white/80"
                       placeholder="Votre nom"
@@ -124,11 +145,11 @@ const Contact = () => {
                     Objet *
                   </label>
                   <Input
-                    id="objet"
-                    name="objet"
+                    id="title"
+                    name="title"
                     type="text"
                     required
-                    value={formData.objet}
+                    value={formData.title}
                     onChange={handleChange}
                     className="h-12 rounded-lg border border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all px-4 bg-white/80"
                     placeholder="Sujet de votre demande"
@@ -159,7 +180,7 @@ const Contact = () => {
             <div className="space-y-8">
               
               {/* Informations de contact */}
-              <Card className="shadow-card border-0">
+              <Card className="shadow-card bg-black/5">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Mail className="h-5 w-5 text-primary" />

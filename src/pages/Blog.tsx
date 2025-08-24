@@ -59,7 +59,8 @@ const Blog = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Conseils, guides pratiques et actualités sur la transformation digitale
+              Découvrez des articles, des astuces et des bonnes pratiques pour améliorer vos processus, prendre de meilleures décisions et rester compétitif dans un environnement digital en constante évolution. <br /><br />
+              Restez à jour et inspirez-vous pour transformer votre entreprise avec le digital!
             </motion.p>
           </motion.div>
         </div>
@@ -168,7 +169,7 @@ const Blog = () => {
       </section>
 
       {/* Newsletter */}
-      <section className="py-16 bg-background">
+      {/* <section className="py-16 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-foreground mb-6">
             Restez informé de nos derniers articles
@@ -187,7 +188,7 @@ const Blog = () => {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Contact */}
       <section className="py-16 bg-muted/50">

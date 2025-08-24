@@ -7,17 +7,17 @@ const MissionSection = () => {
     {
       icon: Target,
       title: "Notre Mission",
-      description: "Aider les entreprises à optimiser leurs processus grâce au digital pour gagner en efficacité et compétitivité."
+      description: "Aider les entreprises à optimiser leurs processus et tirer le meilleur parti du digital pour gagner en efficacité, productivité et compétitivité sur leur marché."
     },
     {
       icon: Lightbulb,
       title: "Notre Expertise",
-      description: "Une équipe d'experts en transformation digitale, Business Intelligence et automatisation des processus."
+      description: "Une initiative soutenue par une expertise en transformation digitale, Business Intelligence, automatisation des processus et création d’applications sur-mesure."
     },
     {
       icon: Rocket,
       title: "Notre Approche",
-      description: "Un accompagnement personnalisé de A à Z, de la stratégie à la mise en œuvre, en passant par la formation."
+      description: "Un accompagnement personnalisé de A à Z, allant de l’audit et la stratégie à la mise en œuvre opérationnelle, en passant par la formation de vos équipes. Nous adaptons nos solutions aux besoins spécifiques de chaque client pour garantir des résultats concrets et mesurables."
     }
   ];
 
@@ -54,7 +54,7 @@ const MissionSection = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 mt-12">
               <Button asChild size="lg" className="gradient-primary">
-                <Link to="/contact">Commencer votre transformation</Link>
+                <Link to="/contact">Commencez votre transformation</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <Link to="/services">En savoir plus</Link>
@@ -67,6 +67,9 @@ const MissionSection = () => {
               <h3 className="text-2xl font-bold mb-6">
                 Transformez votre entreprise dès aujourd'hui
               </h3>
+              <h5 className="text-md mb-6">
+                Grâce à notre offre d’accompagnement :
+              </h5>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-blue-200 rounded-full"></div>
@@ -82,14 +85,14 @@ const MissionSection = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-blue-200 rounded-full"></div>
-                  <span>Accompagnement tout au long du projet</span>
+                  <span>Suivi et accompagnement tout au long du projet</span>
                 </div>
               </div>
               <Button 
                 asChild 
                 className="w-full mt-6 bg-white text-primary hover:bg-blue-50"
               >
-                <Link to="/contact">Réserver votre consultation</Link>
+                <Link to="/contact">Réservez votre consultation</Link>
               </Button>
             </div>
           </div>

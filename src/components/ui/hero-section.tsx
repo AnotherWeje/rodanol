@@ -44,8 +44,8 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Rodanol accompagne les entreprises dans leur transformation digitale grâce à la Business Intelligence,
-            l'automatisation des processus et des formations expertes.
+            Rodanol transforme vos données et vos processus en solutions simples et efficaces, 
+            tout en formant vos équipes pour que votre entreprise prospère dans le digital.
           </motion.p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -68,7 +68,7 @@ const HeroSection = () => {
             >
               <Link to="/contact" className="flex items-center gap-2">
                 <Calendar className="h-5 w-5" />
-                Réserver un RDV
+                Réservez un RDV
               </Link>
             </Button>
           </div>

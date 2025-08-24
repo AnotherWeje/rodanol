@@ -8,26 +8,26 @@ const ServicesSection = () => {
     {
       icon: BarChart3,
       title: "Business Intelligence",
-      description: "Solutions de reporting et d'analyse des données pour prendre des décisions éclairées.",
+      description: "Exploitez vos données pour prendre des décisions éclairées et booster votre performance.",
       features: ["Tableaux de bord interactifs", "Analyse prédictive", "Reporting automatisé"]
     },
     {
       icon: Zap,
-      title: "Automatisation des processus",
-      description: "Mise en place de workflows intelligents pour optimiser vos opérations.",
-      features: ["Power Automate", "Workflows personnalisés", "Intégrations API"]
+      title: "Automatisation & Applications sur-mesure",
+      description: "Optimisez vos opérations et facilitez la vie de vos équipes grâce à des solutions digitales personnalisées.",
+      features: ["Workflows intelligents", "Création d’applications sur-mesure"]
     },
     {
       icon: Users,
       title: "Conseil & Accompagnement",
-      description: "Aide stratégique pour réussir votre transformation digitale.",
-      features: ["Audit digital", "Stratégie de transformation", "Accompagnement change"]
+      description: "Bénéficiez d’un appui stratégique pour réussir vos projets digitaux et accompagner le changement.",
+      features: ["Audit digital", "Stratégie de transformation", "Accompagnement au changement"]
     },
     {
       icon: GraduationCap,
       title: "Formation",
-      description: "Formation de vos équipes sur les outils digitaux et Power Platform.",
-      features: ["Formation Power BI", "Formation Power Apps", "Certification équipes"]
+      description: "Renforcez les compétences de vos équipes sur les outils digitaux et la Power Platform.",
+      features: ["Formation Power BI", "Autres outils de la Power Platform", "Excel", "..."]
     }
   ];
 
@@ -39,7 +39,7 @@ const ServicesSection = () => {
             Nos Services
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Découvrez comment nous pouvons transformer votre entreprise avec des solutions digitales sur mesure
+            Découvrez comment Rodanol peut transformer votre entreprise avec des solutions digitales sur-mesure
           </p>
         </div>
 
@@ -75,7 +75,7 @@ const ServicesSection = () => {
         <div className="text-center">
           <Button asChild size="lg" className="gradient-primary">
             <Link to="/services" className="flex items-center gap-2">
-              Découvrir tous nos services
+              Découvrez tous nos services
               <ArrowRight className="h-5 w-5" />
             </Link>
           </Button>

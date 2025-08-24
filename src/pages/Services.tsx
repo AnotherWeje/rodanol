@@ -17,84 +17,79 @@ const Services = () => {
       icon: BarChart3,
       title: "Business Intelligence",
       description: "Transformez vos données en insights actionnables avec nos solutions de BI avancées.",
-      longDescription: "Notre expertise en Business Intelligence vous permet de prendre des décisions éclairées grâce à des données fiables et des analyses approfondies.",
+      pourquoi: "Parce que chaque décision doit être éclairée par des données fiables et pertinentes.",
+      longDescription: "Rodanol aide les entreprises à exploiter leurs données pour prendre des décisions éclairées et améliorer leur performance globale. Grâce à des solutions de Business Intelligence adaptées, vos informations deviennent un véritable levier stratégique.",
       image: blog1,
       features: [
-        "Tableaux de bord Power BI interactifs",
+        "Création de tableaux de bord interactifs et personnalisés",
         "Modélisation de données avancée", 
-        "Analyse prédictive et machine learning",
-        "Reporting automatisé",
-        "Intégration multi-sources",
-        "Formation équipes BI"
+        "Reporting automatisé pour suivre vos indicateurs clés",
+        "Intégration de sources de données diverses (ERP, CRM, Excel, etc.)"
       ],
       benefits: [
-        "Réduction de 60% du temps de reporting",
-        "Amélioration de la prise de décision",
-        "Visualisation en temps réel",
-        "ROI mesurable rapidement"
+        "Décisions rapides et basées sur des données fiables",
+        "Visualisation claire de la performance et des KPIs",
+        "Réduction du temps de collecte et traitement des données",
+        "Amélioration continue des performances de l’entreprise"
       ]
     },
     {
       icon: Zap,
-      title: "Automatisation des processus",
+      title: "Automatisation & Applications sur-mesure",
       description: "Optimisez vos opérations avec des workflows intelligents et des processus automatisés.",
-      longDescription: "Gagnez du temps et réduisez les erreurs en automatisant vos processus répétitifs avec Power Automate et des solutions sur mesure.",
+      longDescription: "Rodanol optimise vos opérations et facilite le travail de vos équipes grâce à des solutions digitales personnalisées qui combinent automatisation de processus et applications sur-mesure.",
+      pourquoi: "Parce que chaque processus mérite d'être optimisé pour gagner en efficacité.",
       image: blog2,
       features: [
-        "Workflows Power Automate",
-        "Intégrations API personnalisées",
-        "Automatisation des emails",
-        "Processus d'approbation digitaux",
-        "Synchronisation de données",
-        "Notifications intelligentes"
+        "Automatisation des workflows avec Power Automate",
+        "Création d’applications personnalisées avec Power Apps et autres outils",
+        "Optimisation des processus répétitifs et chronophages"
       ],
       benefits: [
-        "Économie de 40h/semaine par processus",
+        "Gain de temps et productivité accrue",
         "Réduction des erreurs humaines",
-        "Amélioration de la productivité",
-        "Traçabilité complète"
+        "Solutions adaptées exactement à vos besoins",
+        "Collaboration et communication interne facilitées"
       ]
     },
     {
       icon: Users,
       title: "Conseil & Accompagnement",
       description: "Bénéficiez de notre expertise pour définir et mettre en œuvre votre stratégie digitale.",
-      longDescription: "Un accompagnement personnalisé pour réussir votre transformation digitale, de l'audit initial à la mise en production.",
+      longDescription: "Rodanol accompagne les entreprises dans leurs projets de transformation digitale en offrant un appui stratégique complet et en mettant à disposition des contacts fiables pour chaque aspect de la transformation, du marketing à la gestion opérationnelle, en passant par les processus internes et la formation des équipes. Nous couvrons l’ensemble du parcours, de l’audit initial à l’adoption et l’optimisation des solutions.",
+      pourquoi: "Parce que chaque projet de transformation nécessite une approche sur mesure et un accompagnement de proximité.",
       image: blog3,
       features: [
-        "Audit digital complet",
-        "Définition de stratégie",
-        "Gestion de projet",
-        "Accompagnement au changement",
-        "Support technique",
-        "Maintenance et évolution"
+        "Audit digital et analyse des processus existants",
+        "Élaboration d’une stratégie de transformation digitale",
+        "Accompagnement au changement pour vos équipes",
+        "Support et suivi tout au long des projets",
       ],
       benefits: [
-        "Feuille de route claire",
-        "Risques minimisés",
-        "Adoption utilisateur optimisée",
-        "Support continu"
+        "Vision claire des besoins et opportunités digitales",
+        "Réduction des risques liés aux projets digitaux",
+        "Adoption rapide et efficace des nouvelles solutions",
+        "Optimisation des ressources et retour sur investissement plus rapide"
       ]
     },
     {
       icon: GraduationCap,
       title: "Formation",
       description: "Formez vos équipes aux outils digitaux et à Power Platform pour une autonomie totale.",
-      longDescription: "Des formations sur mesure pour que vos équipes maîtrisent parfaitement les outils déployés.",
+      longDescription: "Rodanol propose des formations pratiques et personnalisées pour permettre à vos équipes de maîtriser les outils digitaux et la Power Platform. L’objectif est de rendre vos collaborateurs autonomes, d’améliorer leur efficacité et d’assurer une adoption optimale des solutions mises en place, tout en renforçant les compétences internes de votre organisation.",
+      pourquoi: "Parce que la montée en compétences de vos équipes est essentielle pour réussir votre transformation digitale.",
       image: blog4,
       features: [
-        "Formation Power BI",
-        "Formation Power Apps",
-        "Formation Power Automate",
-        "Certification Microsoft",
-        "Sessions pratiques",
-        "Support post-formation"
+        "Formation Power BI pour analyse et reporting avancé",
+        "Formation Power Apps pour créer vos propres applications",
+        "Sessions pratiques adaptées aux besoins de vos équipes",
+        "Formations Excel pour tableaux, graphiques et reporting efficace"
       ],
       benefits: [
-        "Équipes autonomes",
-        "Certifications reconnues",
-        "Amélioration des compétences",
-        "Valorisation professionnelle"
+        "Équipes autonomes et compétentes sur les outils digitaux",
+        "Meilleure adoption des solutions mises en place",
+        "Amélioration de la productivité et de la qualité du travail",
+        "Valorisation des compétences internes et développement professionnel"
       ]
     }
   ];
@@ -132,15 +127,17 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Des solutions digitales complètes pour transformer votre entreprise
+            Chez Rodanol, nous accompagnons les entreprises dans leur transformation digitale grâce à des solutions sur-mesure et adaptées à leurs besoins. <br /><br />
+            Chaque service est conçu pour apporter de la valeur concrète, améliorer la productivité et renforcer la compétitivité de votre entreprise.
+
           </motion.p>
         </motion.div>
   {/* Dégradé décoratif en bas du hero */}
   <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
   </section>
 
-      {/* Services détaillés */}
-      <section className="py-24 bg-background">
+  {/* Services détaillés */}
+  <section className="py-24 bg-background/0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-12">
             {services.map((service, index) => {
@@ -149,7 +146,7 @@ const Services = () => {
               return (
                 <motion.div
                   key={index}
-                  className={`grid lg:grid-cols-2 gap-16 items-center rounded-2xl p-6 ${isEven ? 'bg-white/80' : 'bg-blue-50/60'} ${!isEven ? 'lg:grid-flow-col-dense' : ''}`}
+                  className={`grid lg:grid-cols-2 gap-16 items-center rounded-2xl p-6 ${isEven ? 'bg-black/5' : 'bg-blue-50/60'} ${!isEven ? 'lg:grid-flow-col-dense' : ''}`}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
@@ -168,7 +165,7 @@ const Services = () => {
                     <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
                       {service.title}
                     </h2>
-                    <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                    <p className="text-lg text-muted-foreground mb-8 leading-relaxed text-justify">
                       {service.longDescription}
                     </p>
                     <div className="grid sm:grid-cols-2 gap-8 mb-8">
@@ -219,7 +216,7 @@ const Services = () => {
                         <div className="gradient-primary rounded-lg p-6 text-white">
                           <h4 className="font-semibold mb-4">Pourquoi ce service ?</h4>
                           <p className="text-blue-100 leading-relaxed">
-                            {service.longDescription}
+                            {service.pourquoi}
                           </p>
                         </div>
                       </CardContent>
