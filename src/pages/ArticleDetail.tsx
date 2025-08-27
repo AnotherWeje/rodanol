@@ -75,7 +75,7 @@ const ArticleDetail = () => {
           <circle cx="1200" cy="400" r="120" fill="url(#about-gradient)" opacity="0.18" />
         </svg>
       </div>
-      <div className="sticky top-0 z-50">
+      <div className="fixed top-0 left-0 w-full z-50">
         <Navigation />
       </div>
   <div className="max-w-3xl mx-auto py-16 px-4 text-black">

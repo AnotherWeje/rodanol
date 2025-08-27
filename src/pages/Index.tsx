@@ -63,7 +63,7 @@ const Index = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.3, delay: 0.7 }}
           >
-            Quelques articles du blog
+            Quelques blogs
           </motion.h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {recentBlogs.map((article, idx) => (
