@@ -4,6 +4,10 @@ import AboutSection from "@/components/ui/about-section";
 import ServicesSection from "@/components/ui/services-section";
 import MissionSection from "@/components/ui/mission-section";
 import Footer from "@/components/ui/footer";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Calendar, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Index = () => {
   return (
