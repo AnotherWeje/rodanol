@@ -27,7 +27,7 @@ const AboutSection = () => (
             À propos de <span className="text-[#089cb0]">Rodanol</span>
           </h2>
               <p className="text-lg text-gray-700 mb-8 text-justify bg-white/5 rounded-xl p-6">
-            Rodanol est une entreprise spécialisée dans la transformation digitale des entreprises. Forte de plus de 10 années d'expérience, notre équipe d'experts accompagne les organisations dans leur évolution technologique grâce à des solutions innovantes de Business Intelligence, d'automatisation et de formation.<br /><br />
+            Rodanol est une initiative spécialisée dans la transformation digitale des entreprises au Cameroun et en Afrique. Nous aidons les organisations à tirer parti des nouvelles technologies grâce à des solutions innovantes en Business Intelligence (Power BI, reporting, analyse de données), automatisation & applications sur mesure (workflow, création d’appliction) et conseil & accompagnement stratégique. Nous proposons également des formations professionnelles sur-mesure pour renforcer les compétences des équipes. <br /><br />
             Notre mission est de rendre la transformation digitale accessible à toutes les entreprises. Nous accompagnons nos clients pour optimiser leurs processus, améliorer leur productivité, renforcer leur compétitivité et réussir leurs projets digitaux.
           </p>
         </div>
