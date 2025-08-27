@@ -4,13 +4,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Calendar, Clock, ArrowRight, BarChart3, Zap, TrendingUp } from "lucide-react";
-import { articles } from "@/data/articles";
+// import { articles } from "@/data/articles";
 
 import blogHero from "@/assets/blog.jpg";
 import { motion } from "framer-motion";
 
 
+import React, { useEffect, useState } from "react";
+
 const Blog = () => {
+  const [articles, setArticles] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const getIcon = (category: string) => {
     switch (category) {
       case "Business Intelligence":
@@ -22,9 +28,48 @@ const Blog = () => {
     }
   };
 
+  useEffect(() => {
+    fetch("https://bold-champion-c121bc4dec.strapiapp.com/api/articles?populate=*")
+      .then((res) => {
+        if (!res.ok) throw new Error("Erreur lors du chargement des articles");
+        return res.json();
+      })
+      .then((data) => {
+        // Strapi retourne les articles dans data.data
+        setArticles(data.data || []);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  // featured: on suppose qu'il y a un champ "featured" dans l'objet principal
   const featuredArticle = articles.find((article) => article.featured);
-  const regularArticles = articles.filter((article) => !article.featured);
-  const FeaturedIcon = featuredArticle ? getIcon(featuredArticle.category) : null;
+  const regularArticles = articles
+    .filter((article) => !article.featured)
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  const [page, setPage] = useState(1);
+  const blogsPerPage =6;
+  const totalPages = Math.ceil(regularArticles.length / blogsPerPage);
+  const paginatedArticles = regularArticles.slice((page - 1) * blogsPerPage, page * blogsPerPage);
+  const FeaturedIcon = featuredArticle ? getIcon(featuredArticle.category?.name) : null;
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span>Chargement des articles...</span>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-red-500">
+        <span>{error}</span>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
@@ -77,32 +122,33 @@ const Blog = () => {
                 Article mis en avant
               </span>
             </div>
-            
             <Card className="shadow-elegant border-0 overflow-hidden">
               <div className="grid lg:grid-cols-2">
                 <div className="gradient-primary text-white p-8 lg:p-12 flex flex-col justify-center">
                   <div className="flex items-center gap-2 mb-4">
                     {FeaturedIcon && <FeaturedIcon className="h-6 w-6" />}
-                    <span className="text-blue-200">{featuredArticle.category}</span>
+                    <span className="text-blue-200">{featuredArticle.category?.name}</span>
                   </div>
                   <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                     {featuredArticle.title}
                   </h2>
                   <p className="text-lg text-blue-100 mb-6 leading-relaxed">
-                    {featuredArticle.excerpt}
+                    {featuredArticle.description}
                   </p>
+                  {featuredArticle.cover?.url && (
+                    <img src={featuredArticle.cover.url} alt={featuredArticle.title} className="mb-6 rounded-lg w-full object-cover" style={{height: '220px', aspectRatio: '16/9'}} />
+                  )}
+                  {featuredArticle.author?.name && (
+                    <div className="mb-4 text-blue-100">Auteur : {featuredArticle.author.name}</div>
+                  )}
                   <div className="flex items-center gap-4 text-blue-200 text-sm mb-6">
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
-                      {featuredArticle.date}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      {featuredArticle.readTime}
+                      {featuredArticle.createdAt?.slice(0, 10)}
                     </div>
                   </div>
                   <Button asChild className="bg-white text-primary hover:bg-blue-50 w-fit">
-                    <Link to={`/blog/${featuredArticle.id}`} className="inline-flex items-center">
+                    <Link to={`/blog/${featuredArticle.documentId}`} className="inline-flex items-center">
                       Lire l'article complet
                       <ArrowRight className="h-4 w-4 ml-2" />
                     </Link>
@@ -112,7 +158,7 @@ const Blog = () => {
                   <div className="h-full flex flex-col justify-center">
                     <h3 className="text-xl font-semibold mb-4">Aperçu de l'article</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      {featuredArticle.content}
+                      {featuredArticle.description}
                     </p>
                   </div>
                 </CardContent>
@@ -130,42 +176,72 @@ const Blog = () => {
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {regularArticles.map((article) => (
-              <Card key={article.id} className="shadow-card hover:shadow-elegant transition-smooth border-0 h-full">
-                <CardHeader>
-                  <div className="flex items-center gap-2 mb-2">
-                    {(() => { const Icon = getIcon(article.category); return <Icon className="h-5 w-5 text-primary" />; })()}
-                    <span className="text-sm text-primary font-medium">{article.category}</span>
+            {paginatedArticles.map((article) => (
+              <div key={article.id} className="shadow-card border rounded-lg p-6 flex flex-col h-full bg-white">
+                {article.cover?.url && (
+                  <div className="relative mb-4 w-full h-[180px] rounded overflow-hidden">
+                    <img
+                      src={article.cover.url}
+                      alt={article.title}
+                      className="absolute inset-0 w-full h-full object-cover blur-md scale-110"
+                      aria-hidden="true"
+                    />
+                    <img
+                      src={article.cover.url}
+                      alt={article.title}
+                      className="absolute inset-0 w-full h-full object-contain z-10"
+                    />
                   </div>
-                  <CardTitle className="text-xl leading-tight">
-                    {article.title}
-                  </CardTitle>
-                  <CardDescription className="text-base">
-                    {article.excerpt}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="flex-1 flex flex-col justify-between">
-                  <div className="flex items-center gap-4 text-muted-foreground text-sm mb-4">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
-                      {article.date}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      {article.readTime}
-                    </div>
+                )}
+                <div className="flex-1 flex flex-col">
+                  <h3 className="text-xl font-semibold mb-2">{article.title}</h3>
+                  <div className="text-muted-foreground text-sm mb-2 text-left">
+                    Auteur : {article.author?.name}
                   </div>
-                  <Button asChild variant="outline" className="w-full">
-                    <Link to={`/blog/${article.id}`} className="inline-flex items-center justify-center">
+                  <div className="flex items-center gap-1 text-muted-foreground text-sm mb-4 justify-left">
+                    <Calendar className="h-4 w-4" />
+                    {article.createdAt?.slice(0, 10)}
+                  </div>
+                  <p className="text-base mb-4">
+                    {article.description?.slice(0, 150)}{article.description && article.description.length > 150 ? '...' : ''}
+                  </p>
+                  <div className="mt-auto">
+                    <Link
+                      to={`/blog/${btoa(article.documentId + '-' + Date.now())}`}
+                      className="inline-flex items-center justify-center text-primary font-medium"
+                      onClick={() => {
+                        localStorage.setItem('articleId', article.documentId);
+                      }}
+                    >
                       Lire l'article
                       <ArrowRight className="h-4 w-4 ml-2" />
                     </Link>
-                  </Button>
-                </CardContent>
-              </Card>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-2 mt-8">
+            <Button className="gradient-primary text-white" disabled={page === 1} onClick={() => setPage(page - 1)}>
+              Précédent
+            </Button>
+            {[...Array(totalPages)].map((_, i) => (
+              <Button
+                key={i}
+                className={page === i + 1 ? "gradient-primary text-white" : "bg-white text-primary border border-primary"}
+                onClick={() => setPage(i + 1)}
+              >
+                {i + 1}
+              </Button>
+            ))}
+            <Button className="gradient-primary text-white" disabled={page === totalPages} onClick={() => setPage(page + 1)}>
+              Suivant
+            </Button>
+          </div>
+        )}
       </section>
 
       {/* Newsletter */}

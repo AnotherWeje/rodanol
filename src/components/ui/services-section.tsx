@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { BarChart3, Zap, Users, GraduationCap, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const ServicesSection = () => {
   const services = [
@@ -32,22 +33,53 @@ const ServicesSection = () => {
   ];
 
   return (
-  <section className="py-16 bg-muted/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+    <motion.section
+      className="py-8 bg-muted/50"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.3 }}
+    >
+      <motion.div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.3, delay: 0.1 }}
+      >
+  <div className="text-center mb-8">
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold text-foreground mb-6"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+          >
             Nos Services
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          </motion.h2>
+          <motion.p
+            className="text-xl text-muted-foreground max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
+          >
             Découvrez comment Rodanol peut transformer votre entreprise avec des solutions digitales sur-mesure
-          </p>
+          </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <Card key={index} className="shadow-card hover:shadow-elegant transition-smooth border-0 bg-card">
+              <motion.div
+                key={index}
+                className="shadow-card hover:shadow-elegant transition-smooth border-0 bg-card"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
+              >
                 <CardHeader className="text-center">
                   <div className="w-16 h-16 gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
                     <IconComponent className="h-8 w-8 text-primary-foreground" />
@@ -67,21 +99,27 @@ const ServicesSection = () => {
                     ))}
                   </ul>
                 </CardContent>
-              </Card>
+              </motion.div>
             );
           })}
         </div>
 
-        <div className="text-center">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.9 }}
+        >
           <Button asChild size="lg" className="gradient-primary">
             <Link to="/services" className="flex items-center gap-2">
               Découvrez tous nos services
               <ArrowRight className="h-5 w-5" />
             </Link>
           </Button>
-        </div>
-      </div>
-    </section>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 };
 

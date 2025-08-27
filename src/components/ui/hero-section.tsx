@@ -6,7 +6,7 @@ import heroImage from "@/assets/hero-digital-transformation.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-hero-gradient">
+  <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-hero-gradient">
       {/* Background Gradient statique */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -21,7 +21,7 @@ const HeroSection = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
           className="text-center text-white"
           initial={{ opacity: 0, y: 40 }}
