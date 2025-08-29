@@ -52,7 +52,7 @@ const HeroSection = () => {
             <Button
               asChild
               size="lg"
-              className="bg-white text-primary hover:bg-blue-50 transition-bounce text-lg px-8 py-6 h-auto"
+              className="bg-white text-primary hover:bg-blue-50 transition-bounce text-lg px-8 py-4 h-auto"
             >
               <Link to="/contact" className="flex items-center gap-2">
                 Contactez-nous
@@ -60,7 +60,7 @@ const HeroSection = () => {
               </Link>
             </Button>
 
-            <Button
+            {/* <Button
               asChild
               variant="outline"
               size="lg"
@@ -70,7 +70,7 @@ const HeroSection = () => {
                 <Calendar className="h-5 w-5" />
                 Réservez un RDV
               </Link>
-            </Button>
+            </Button> */}
           </div>
         </motion.div>
       </div>

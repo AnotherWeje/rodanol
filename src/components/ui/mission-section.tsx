@@ -12,7 +12,7 @@ const MissionSection = () => {
     {
       icon: Lightbulb,
       title: "Notre Expertise",
-      description: "Une initiative soutenue par une expertise en transformation digitale, Business Intelligence, automatisation des processus et création d’applications sur-mesure."
+      description: "Une initiative soutenue par une expertise en transformation digitale, Business Intelligence, automatisation des processus et création d’applications sur mesure."
     },
     {
       icon: Rocket,
@@ -27,10 +27,10 @@ const MissionSection = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8">
-              Pourquoi choisir 
+              Pourquoi choisir
               <span className="block" style={{ color: '#089cb0' }}>Rodanol ?</span>
             </h2>
-            
+
             <div className="space-y-8">
               {values.map((value, index) => {
                 const IconComponent = value.icon;
@@ -88,11 +88,11 @@ const MissionSection = () => {
                   <span>Suivi et accompagnement tout au long du projet</span>
                 </div>
               </div>
-              <Button 
-                asChild 
+              <Button
+                asChild
                 className="w-full mt-6 bg-white text-primary hover:bg-blue-50"
               >
-                <Link to="/contact">Réservez votre consultation</Link>
+                <Link to="https://calendly.com/josevoukeng25/20min" target="_blank">Réservez un créneau</Link>
               </Button>
             </div>
           </div>

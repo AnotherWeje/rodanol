@@ -59,7 +59,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      
+
       {/* Hero Contact */}
       <section className="relative py-24 min-h-[60vh] gradient-hero text-white">
         <img
@@ -90,18 +90,18 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             Vous avez un projet ou une question concernant la transformation digitale? <br /><br />
-            Remplissez le formulaire ci-dessous, utilisez nos coordonnées ou réservez un rendez vous gratuitement pour prendre contact facilement et rapidement. 
+            Remplissez le formulaire ci-dessous, utilisez nos coordonnées ou réservez un rendez vous gratuitement pour prendre contact facilement et rapidement.
           </motion.p>
         </motion.div>
-  {/* Dégradé décoratif en bas du hero */}
-  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
-  </section>
+        {/* Dégradé décoratif en bas du hero */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+      </section>
 
-  {/* Contact Section */}
-  <section className="py-24 bg-background/0">
+      {/* Contact Section */}
+      <section className="py-16 bg-background/0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
-            
+
             {/* Formulaire de contact */}
             <div>
               <h2 className="text-3xl font-bold text-foreground mb-8">
@@ -171,14 +171,14 @@ const Contact = () => {
                   />
                 </div>
                 <Button type="submit" size="lg" className="w-full gradient-primary shadow-lg hover:scale-[1.03] transition-transform duration-200">
-                  Envoyer le message
+                  Envoyez le message
                 </Button>
               </form>
             </div>
 
             {/* Informations et RDV */}
             <div className="space-y-8">
-              
+
               {/* Informations de contact */}
               <Card className="shadow-card bg-black/5">
                 <CardHeader>
@@ -229,14 +229,14 @@ const Contact = () => {
                       <span>Disponible sous 48h</span>
                     </div>
                   </div>
-                  
-                  <Button 
+
+                  <Button
                     asChild
                     className="w-full bg-white text-primary hover:bg-blue-50"
                     size="lg"
                   >
                     <a href="https://calendly.com/josevoukeng25/20min" target="_blank" rel="noopener noreferrer">
-                      Réserver un créneau
+                      Réservez un créneau
                     </a>
                   </Button>
                 </CardContent>

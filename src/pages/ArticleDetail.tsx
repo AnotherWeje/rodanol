@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useBlogContext } from "@/hooks/use-blog-context";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
@@ -7,6 +8,7 @@ import Footer from "@/components/ui/footer";
 
 const ArticleDetail = () => {
   const { id: hash } = useParams();
+  const { blogs } = useBlogContext();
   const [article, setArticle] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -22,28 +24,36 @@ const ArticleDetail = () => {
       } else if (storedId) {
         realId = storedId;
       }
-    } catch (e) {}
+    } catch (e) { }
     if (!realId) {
       setError("Article introuvable");
       setLoading(false);
       return;
     }
-    fetch(`https://bold-champion-c121bc4dec.strapiapp.com/api/articles/${realId}?populate=*`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data || !data.data) {
-          setError("Article introuvable");
+    // Cherche l'article dans le contexte blogs
+    const found = blogs.find((a: any) => String(a.id) === String(realId));
+    if (found) {
+      setArticle({ data: found });
+      setLoading(false);
+    } else {
+      // fallback API si non trouvé
+      fetch(`https://bold-champion-c121bc4dec.strapiapp.com/api/articles/${realId}?populate=*`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (!data || !data.data) {
+            setError("Article introuvable");
+            setLoading(false);
+            return;
+          }
+          setArticle(data);
           setLoading(false);
-          return;
-        }
-        setArticle(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError("Erreur lors du chargement de l'article");
-        setLoading(false);
-      });
-  }, [hash]);
+        })
+        .catch(() => {
+          setError("Erreur lors du chargement de l'article");
+          setLoading(false);
+        });
+    }
+  }, [hash, blogs]);
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center">Chargement...</div>;
@@ -59,7 +69,7 @@ const ArticleDetail = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Fond noir transparent 99% */}
-  <div className="fixed inset-0 w-full h-full -z-20 pointer-events-none" style={{background: "rgba(0,0,0,0.07)"}} />
+      <div className="fixed inset-0 w-full h-full -z-20 pointer-events-none" style={{ background: "rgba(0,0,0,0.07)" }} />
       {/* SVG vectoriel en arrière-plan */}
       <div className="fixed inset-0 w-full h-full -z-10 pointer-events-none">
         <svg width="100%" height="100%" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -78,7 +88,7 @@ const ArticleDetail = () => {
       <div className="fixed top-0 left-0 w-full z-50">
         <Navigation />
       </div>
-  <div className="max-w-3xl mx-auto py-16 px-4 text-black">
+      <div className="max-w-3xl mx-auto py-16 mt-10 px-4 text-black">
         <h1 className="text-4xl font-bold mb-4">{art.title}</h1>
         <div className="flex items-center gap-2 text-muted-foreground mb-6">
           <Calendar className="h-4 w-4" />
@@ -88,7 +98,7 @@ const ArticleDetail = () => {
           <img src={art.cover.url} alt={art.title} className="mb-8 rounded-lg w-full object-cover" />
         )}
         <div className="prose prose-lg mb-8 text-justify">
-          <p style={{whiteSpace: "pre-line"}}>
+          <p style={{ whiteSpace: "pre-line" }}>
             {art.description}
           </p>
         </div>

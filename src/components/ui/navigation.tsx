@@ -57,9 +57,9 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button asChild variant="default" className="gradient-primary">
-              <Link to="/contact">Contactez-nous</Link>
-            </Button>
+            {/* <Button asChild variant="default" className="gradient-primary">
+              <Link to="https://calendly.com/josevoukeng25/20min" target="_blank">Réservez un RDV</Link>
+            </Button> */}
           </div>
 
           {/* Mobile menu button */}
@@ -94,13 +94,13 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-2">
+              {/* <div className="pt-2">
                 <Button asChild variant="default" className="w-full gradient-primary">
                   <Link to="/contact" onClick={() => setIsOpen(false)}>
                     Contactez-nous
                   </Link>
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
         )}

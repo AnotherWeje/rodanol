@@ -11,8 +11,10 @@ import { motion } from "framer-motion";
 
 
 import React, { useEffect, useState } from "react";
+import { useBlogContext } from "@/hooks/use-blog-context";
 
 const Blog = () => {
+  const { blogs, setBlogs } = useBlogContext();
   const [articles, setArticles] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -29,21 +31,26 @@ const Blog = () => {
   };
 
   useEffect(() => {
-    fetch("https://bold-champion-c121bc4dec.strapiapp.com/api/articles?populate=*")
-      .then((res) => {
-        if (!res.ok) throw new Error("Erreur lors du chargement des articles");
-        return res.json();
-      })
-      .then((data) => {
-        // Strapi retourne les articles dans data.data
-        setArticles(data.data || []);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
+    if (blogs && blogs.length > 0) {
+      setArticles(blogs);
+      setLoading(false);
+    } else {
+      const fetchBlogs = async () => {
+        try {
+          const res = await fetch("https://bold-champion-c121bc4dec.strapiapp.com/api/articles?populate=*");
+          if (!res.ok) throw new Error("Erreur lors du chargement des articles");
+          const data = await res.json();
+          setArticles(data.data || []);
+          setBlogs(data.data || []);
+        } catch (err: any) {
+          setError(err.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchBlogs();
+    }
+  }, [blogs, setBlogs]);
 
   // featured: on suppose qu'il y a un champ "featured" dans l'objet principal
   const featuredArticle = articles.find((article) => article.featured);
@@ -51,7 +58,7 @@ const Blog = () => {
     .filter((article) => !article.featured)
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   const [page, setPage] = useState(1);
-  const blogsPerPage =6;
+  const blogsPerPage = 6;
   const totalPages = Math.ceil(regularArticles.length / blogsPerPage);
   const paginatedArticles = regularArticles.slice((page - 1) * blogsPerPage, page * blogsPerPage);
   const FeaturedIcon = featuredArticle ? getIcon(featuredArticle.category?.name) : null;
@@ -74,7 +81,7 @@ const Blog = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      
+
       {/* Hero Blog */}
       <section className="relative py-24 min-h-[60vh] gradient-hero text-white">
         <img
@@ -109,9 +116,9 @@ const Blog = () => {
             </motion.p>
           </motion.div>
         </div>
-  {/* Dégradé décoratif en bas du hero */}
-  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
-  </section>
+        {/* Dégradé décoratif en bas du hero */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+      </section>
 
       {/* Article mis en avant */}
       {featuredArticle && (
@@ -136,7 +143,7 @@ const Blog = () => {
                     {featuredArticle.description}
                   </p>
                   {featuredArticle.cover?.url && (
-                    <img src={featuredArticle.cover.url} alt={featuredArticle.title} className="mb-6 rounded-lg w-full object-cover" style={{height: '220px', aspectRatio: '16/9'}} />
+                    <img src={featuredArticle.cover.url} alt={featuredArticle.title} className="mb-6 rounded-lg w-full object-cover" style={{ height: '220px', aspectRatio: '16/9' }} />
                   )}
                   {featuredArticle.author?.name && (
                     <div className="mb-4 text-blue-100">Auteur : {featuredArticle.author.name}</div>
@@ -174,7 +181,7 @@ const Blog = () => {
           <h2 className="text-3xl font-bold text-foreground mb-12 text-center">
             Tous nos articles
           </h2>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {paginatedArticles.map((article) => (
               <div key={article.id} className="shadow-card border rounded-lg p-6 flex flex-col h-full bg-white">
@@ -267,7 +274,7 @@ const Blog = () => {
       </section> */}
 
       {/* CTA Contact */}
-      <section className="py-16 bg-muted/50">
+      <section className="pb-16 bg-muted/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-foreground mb-6">
             Une question sur nos articles ?

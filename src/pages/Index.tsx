@@ -25,9 +25,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
-        <Navigation />
-      </motion.div>
+      {/* Navigation fixe */}
+      <Navigation />
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.1 }}>
         <HeroSection />
       </motion.div>

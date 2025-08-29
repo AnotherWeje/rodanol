@@ -14,9 +14,9 @@ const ServicesSection = () => {
     },
     {
       icon: Zap,
-      title: "Automatisation & Applications sur-mesure",
+      title: "Automatisation & Applications sur mesure",
       description: "Optimisez vos opérations et facilitez la vie de vos équipes grâce à des solutions digitales personnalisées.",
-      features: ["Workflows intelligents", "Création d’applications sur-mesure"]
+      features: ["Workflows intelligents", "Création d’applications sur mesure"]
     },
     {
       icon: Users,
@@ -47,7 +47,7 @@ const ServicesSection = () => {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.3, delay: 0.1 }}
       >
-  <div className="text-center mb-8">
+        <div className="text-center mb-8">
           <motion.h2
             className="text-4xl md:text-5xl font-bold text-foreground mb-6"
             initial={{ opacity: 0, y: 40 }}
@@ -64,11 +64,11 @@ const ServicesSection = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.3, delay: 0.3 }}
           >
-            Découvrez comment Rodanol peut transformer votre entreprise avec des solutions digitales sur-mesure
+            Découvrez comment Rodanol peut transformer votre entreprise avec des solutions digitales sur mesure
           </motion.p>
         </div>
 
-  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
@@ -113,7 +113,7 @@ const ServicesSection = () => {
         >
           <Button asChild size="lg" className="gradient-primary">
             <Link to="/services" className="flex items-center gap-2">
-              Découvrez tous nos services
+              En savoir plus
               <ArrowRight className="h-5 w-5" />
             </Link>
           </Button>

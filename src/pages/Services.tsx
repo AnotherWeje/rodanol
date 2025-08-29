@@ -22,7 +22,7 @@ const Services = () => {
       image: blog1,
       features: [
         "Création de tableaux de bord interactifs et personnalisés",
-        "Modélisation de données avancée", 
+        "Modélisation de données avancée",
         "Reporting automatisé pour suivre vos indicateurs clés",
         "Intégration de sources de données diverses (ERP, CRM, Excel, etc.)"
       ],
@@ -35,9 +35,9 @@ const Services = () => {
     },
     {
       icon: Zap,
-      title: "Automatisation & Applications sur-mesure",
+      title: "Automatisation & Applications sur mesure",
       description: "Optimisez vos opérations avec des workflows intelligents et des processus automatisés.",
-      longDescription: "Rodanol optimise vos opérations et facilite le travail de vos équipes grâce à des solutions digitales personnalisées qui combinent automatisation de processus et applications sur-mesure.",
+      longDescription: "Rodanol optimise vos opérations et facilite le travail de vos équipes grâce à des solutions digitales personnalisées qui combinent automatisation de processus et applications sur mesure.",
       pourquoi: "Parce que chaque processus mérite d'être optimisé pour gagner en efficacité.",
       image: blog2,
       features: [
@@ -97,7 +97,7 @@ const Services = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      
+
       {/* Hero Services */}
       <section className="relative py-24 min-h-[60vh] gradient-hero text-white">
         <img
@@ -127,17 +127,17 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Chez Rodanol, nous accompagnons les entreprises dans leur transformation digitale grâce à des solutions sur-mesure et adaptées à leurs besoins. <br /><br />
+            Chez Rodanol, nous accompagnons les entreprises dans leur transformation digitale grâce à des solutions sur mesure et adaptées à leurs besoins. <br /><br />
             Chaque service est conçu pour apporter de la valeur concrète, améliorer la productivité et renforcer la compétitivité de votre entreprise.
 
           </motion.p>
         </motion.div>
-  {/* Dégradé décoratif en bas du hero */}
-  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
-  </section>
+        {/* Dégradé décoratif en bas du hero */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+      </section>
 
-  {/* Services détaillés */}
-  <section className="py-24 bg-background/0">
+      {/* Services détaillés */}
+      <section className="py-6 bg-background/0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-12">
             {services.map((service, index) => {
@@ -204,22 +204,22 @@ const Services = () => {
                     transition={{ duration: 0.7, delay: index * 0.2 + 0.2 }}
                   >
                     {/* <Card className="shadow-elegant border-0 bg-card"> */}
-                      
-                      <CardContent className="p-0">
-                        <img
-                          src={service.image}
-                          alt={service.title + " illustration"}
-                          className="rounded-xl shadow-lg mb-8 w-full  object-cover mx-auto"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                        <div className="gradient-primary rounded-lg p-6 text-white">
-                          <h4 className="font-semibold mb-4">Pourquoi ce service ?</h4>
-                          <p className="text-blue-100 leading-relaxed">
-                            {service.pourquoi}
-                          </p>
-                        </div>
-                      </CardContent>
+
+                    <CardContent className="p-0">
+                      <img
+                        src={service.image}
+                        alt={service.title + " illustration"}
+                        className="rounded-xl shadow-lg mb-8 w-full  object-cover mx-auto"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <div className="gradient-primary rounded-lg p-6 text-white">
+                        <h4 className="font-semibold mb-4">Pourquoi ce service ?</h4>
+                        <p className="text-blue-100 leading-relaxed">
+                          {service.pourquoi}
+                        </p>
+                      </div>
+                    </CardContent>
                     {/* </Card> */}
                   </motion.div>
                 </motion.div>
